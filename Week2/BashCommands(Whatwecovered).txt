@@ -1,0 +1,2 @@
+Bash Commands seen grep cd ls mkdir touch cat rm vi awk sed mv cp
+echo pwd and all other commands with all the flags 
