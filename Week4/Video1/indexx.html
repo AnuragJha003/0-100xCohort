@@ -1,0 +1,45 @@
+<input>
+<script>
+    let timeout;
+    function debouncepopulatediv(){
+        //delay the call to popularediv until not called for 100ms
+        //and has been called atleast once
+        clearTimeout(timeout);//whenever this gets called clear the old clock which was calling to populate the div 
+        //and start the new timeout 
+        timeout=setTimeout(function(){
+            populatediv();
+        },100);//itna time baad request send krega wapis 
+    }
+    function populatediv() {
+        const a = document.getElementById("fn").value;
+        const b = document.getElementById("sn").value;
+        //const elemt = document.getElementById("finalsum");
+        //elemt.innerHTML = parseInt(a) + parseInt(b);
+        fetch("url ? a="+a+"&b="+b) //FETCH API SYNTAX CAN USE AXIOS AND ALL IN RECENT TIMES 
+        .then(function(response){
+            console.log(response);//THIS WILL BE A SYNTAX COMNG 
+            response.text()
+            .then(function(ans){
+                //console.log(ans); //since we know this is text format we call it like this 
+                document.getElementById("finalsum").innerHTML=ans;
+            })
+        });
+        //The same assignment for the harder one would be just 
+        //take 3 inputs andd have a button onclick 
+        //in script const p const r const t 
+        //fetch url p=& r= & t= krke then response if it is text or json then 
+        //put in the geteleemnt by id finalinterest and return 
+        //the type of response is json so response.json()
+    }
+</script>
+
+<body><input type="text" id="fn" placeholder="Enter fn"></input>
+    <br></br>
+    <input type="text" id="sn" placeholder="Enter sn"></input>
+    <br></br>
+    <button onclick="populatediv()">Calculate Sum</button>
+    <br></br>
+    <div id="finalsum"></div>
+</body>
+
+</html>
